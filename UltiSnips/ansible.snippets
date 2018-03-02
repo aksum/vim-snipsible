@@ -1,0 +1,23 @@
+priority -60
+
+snippet aplay
+- hosts: ${1:hostgroup}
+  remote_user: ${2:devops}
+	gather_facts: ${3:yes}
+
+  vars:
+
+  roles:
+    - ansible-role-${4}
+endsnippet
+
+snippet atask
+- hosts: ${1:localhost}
+  ${2:connection: local}
+	gather_facts: ${3:no}
+
+	vars:
+
+	tasks:
+	  - name: ${4}
+endsnippet
