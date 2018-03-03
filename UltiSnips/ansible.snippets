@@ -1,6 +1,6 @@
 priority -60
 
-snippet aplay
+snippet play
 - hosts: ${1:hostgroup}
   remote_user: ${2:devops}
   gather_facts: ${3:yes}
@@ -11,7 +11,7 @@ snippet aplay
     - ansible-role-${4}
 endsnippet
 
-snippet atask
+snippet task
 - hosts: ${1:localhost}
   ${2:connection: local}
   gather_facts: ${3:no}
@@ -20,4 +20,52 @@ snippet atask
 
   tasks:
     - name: ${4}
+endsnippet
+
+snippet apt
+- name: ${1}
+  apt:
+    name: ${2}
+    update_cache: ${3:no}
+    state: ${4:present}
+  with_items: ${5}
+  become: ${6:yes}
+  tags:
+    - ${7}
+endsnippet
+
+snippet aptkey
+- name: ${1}
+  apt_key:
+    url: "${2}"
+    keyserver: ${3}
+    state: ${4}
+  become: ${5:yes}
+  tags:
+    - ${6}
+endsnippet
+
+snippet aptrepo
+- name: ${1}
+  apt_repository:
+    repo: "${2}"
+    update_cache: ${3:yes}
+    state: ${4:present}
+  become: ${5:yes}
+  tags:
+    - ${6}
+endsnippet
+
+snippet archive
+- name: ${1}
+  archive:
+    path: ${2}
+    dest: ${3}
+    owner: ${4}
+    group: ${5}
+    format: ${6:gz}
+    remove: ${7:no}
+  become: ${8}
+  tags:
+    - ${9}
 endsnippet
