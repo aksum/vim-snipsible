@@ -106,3 +106,45 @@ snippet authorizedkey
   tags:
     - ${10}
 endsnippet
+
+snippet blockinfile
+- name: ${1}
+  blockinfile:
+    path: ${2}
+    #insertbefore: "${3}"
+    #insertafter: "${4}"
+    block: |
+    ${5}
+    marker: "### {mark} ${6} ###"
+    create: ${7:no}
+    backup: ${8:no}
+    state: ${9:present}
+  become: ${10:yes}
+  tags:
+    - ${11}
+endsnippet
+
+snippet bower
+- name: ${1}
+  bower:
+    name: ${2}
+    path: ${3}
+    version: ${4}
+    state: ${5:present}
+  become: ${6:no}
+  tags:
+    - ${7}
+endsnippet
+
+snippet command
+- name: ${1}
+  command: ${2}
+  args:
+    chdir: ${3}
+    #creates: ${4}
+    #removes: ${5}
+  register: ${6}
+  become: ${7:yes}
+  tags:
+    - ${8}
+endsnippet
