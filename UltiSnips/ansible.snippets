@@ -69,3 +69,39 @@ snippet archive
   tags:
     - ${9}
 endsnippet
+
+snippet assert
+- name: ${1}
+  assert:
+    that: ${2}
+    msg: ${3}
+  become: ${4:yes}
+  tags:
+    - ${5}
+endsnippet
+
+snippet at
+- name: ${1}
+  at:
+    command: "${2}"
+    count: ${2}
+    units: ${3}
+    state: ${4:present}
+  become: ${5:yes}
+  tags:
+    - ${6}
+endsnippet
+
+snippet authorizedkey
+- name: ${1}
+  authorized_key:
+    user: ${2}
+    key: ${3}
+    path: ${4}
+    comment: ${5}
+    exclusive: ${6:no}
+    managed_dir: ${7:yes}
+    state: ${8:present}
+  become: ${9:yes}
+  tags:
+    - ${10}
