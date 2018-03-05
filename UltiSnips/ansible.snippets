@@ -84,12 +84,12 @@ snippet at
 - name: ${1}
   at:
     command: "${2}"
-    count: ${2}
-    units: ${3}
-    state: ${4:present}
-  become: ${5:yes}
+    count: ${3}
+    units: ${4}
+    state: ${5:present}
+  become: ${6:yes}
   tags:
-    - ${6}
+    - ${7}
 endsnippet
 
 snippet authorizedkey
@@ -105,3 +105,4 @@ snippet authorizedkey
   become: ${9:yes}
   tags:
     - ${10}
+endsnippet
