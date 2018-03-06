@@ -148,3 +148,49 @@ snippet command
   tags:
     - ${8}
 endsnippet
+
+snippet copy
+- name: ${1}
+  copy:
+    src: ${2}
+    dest: ${3}
+    remote_src: ${4:yes}
+    owner: ${5}
+    group: ${6}
+    mode: ${7}
+    backup: ${8:no}
+  become: ${9:yes}
+  tags:
+    - ${10}
+endsnippet
+
+snippet cron
+- name: ${1}
+  cron:
+    name: ${2}
+    user: ${3}
+    cron_file: ${4}
+    job: ${5}
+    minute: ${6}
+    hour: ${7}
+    day: ${8}
+    backup: ${9:no}
+    state: ${10:present}
+  become: ${11:yes}
+  tags:
+    - ${12}
+endsnippet
+
+snippet cronvar
+- name: ${1}
+  cronvar:
+    name: ${2}
+    user: ${3}
+    cron_file: ${4}
+    value: ${5}
+    backup: ${6:yes}
+    state: ${7:present}
+  become: ${8:yes}
+  tags:
+    - ${9}
+endsnippet
